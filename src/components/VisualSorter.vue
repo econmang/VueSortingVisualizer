@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import sortingAlgos from './SortingAlgos'
 export default {
   name: 'VisualSorter',
   data() {
@@ -47,35 +48,27 @@ export default {
         this.array.push(this.genRandNum())
       }
     },
-    runSort() {
+    async runSort() {
+      let algos = document.getElementById("algos")
+      let arraySize = document.getElementById("arraySize")
+      let sortButton = document.getElementById("sortButton")
       this.fillArray();
       
-      document.getElementById("algos").disabled = true;
-      document.getElementById("arraySize").disabled = true;
-      document.getElementById("sortButton").disabled = true;
+      algos.disabled = true;
+      arraySize.disabled = true;
+      sortButton.disabled = true;
 
-      this.bubbleSort();
-
-      document.getElementById("algos").disabled = false;
-      document.getElementById("arraySize").disabled = false;
-      document.getElementById("sortButton").disabled = false;
-    },
-	async bubbleSort() {
-      let sorted = false;
-      let counter = 1;
-      while (!sorted) {
-        sorted = true;
-        for(let i = 0; i < this.arrayLen - counter; i++) {
-          if (this.array[i] > this.array[i+1]) {
-            sorted = false; 
-			let temp = this.array[i]
-			this.array[i] = this.array[i+1]
-			this.array[i+1] = temp
-          }
-        }
-		counter++;
+      // await to ensure components stay disabled until sort is completed
+      if (algos.value === "bubble") {
+        await sortingAlgos.bubbleSort(this.array, this.arrayLen);
+      } else if (algos.value === "insertion") {
+        await sortingAlgos.insertionSort(this.array, this.arrayLen); 
       }
-	}
+
+      algos.disabled = false;
+      arraySize.disabled = false;
+      sortButton.disabled = false;
+    },
   }
 }
 </script>
@@ -96,5 +89,6 @@ export default {
   display: inline-block;
   width: 8px;
   margin: 0 5px;
+  transition: ;
 }
 </style>

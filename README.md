@@ -1,2 +1,3 @@
-# VueSortingVisualizer
-Simple project to learn about VueJS and creating a visualizer for sorting algorithms.
+# Vue Sorting Visualizer
+
+This is a simple project to learn about VueJS by creating a visualizer for sorting algorithms.

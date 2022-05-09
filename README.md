@@ -1,4 +1,7 @@
-# sorting-visualizer
+# Vue Sorting Algorithm Visualization
+
+Simple Vue project to visualize several sorting algorithms by using a bar graph design.
+This is a learning project to understand a bit about VueJS in a fun project utilizing some known algo implementations.
 
 ## Project setup
 ```
